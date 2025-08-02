@@ -121,13 +121,32 @@
 
 .about__features {
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
 }
 
+/* Responsive layout for features */
+@media (min-width: 768px) {
+  .about__features {
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-2xl) !important;
+    display: grid !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about__features {
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-3xl) !important;
+    display: grid !important;
+  }
+}
+
 .about__feature {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   gap: var(--spacing-lg);
   padding: var(--spacing-xl);
   background: linear-gradient(135deg, #f8fffe 0%, #f0f9ff 100%);
@@ -136,6 +155,7 @@
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .about__feature::before {
@@ -176,6 +196,8 @@
 
 .about__feature-content {
   flex: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .about__feature-content h3 {
@@ -496,24 +518,46 @@
   }
   
   .about__features {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-3xl) !important;
     margin-top: var(--spacing-3xl);
   }
   
   .about__feature {
-    padding: var(--spacing-xl) var(--spacing-2xl);
+    padding: var(--spacing-2xl);
     border-radius: var(--border-radius-lg);
+    background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
+    box-shadow: var(--shadow-lg);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: visible;
+  }
+  
+  .about__feature-icon {
+    width: 4rem;
+    height: 4rem;
+    font-size: var(--font-size-2xl);
+    box-shadow: var(--shadow-xl);
   }
   
   .about__feature-content h3 {
     font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gray-dark);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.4;
+    word-wrap: break-word;
+    max-width: 100%;
   }
   
   .about__feature-content p {
     font-size: var(--font-size-lg);
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--color-gray-dark);
+    font-weight: var(--font-weight-medium);
   }
   
   .mvv__grid {
