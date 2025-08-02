@@ -546,17 +546,24 @@ const Utils = {
         const heroBg = document.querySelector('.hero__bg');
         if (heroBg) {
             const heroSection = document.querySelector('.hero');
-            heroSection.classList.add('loading');
             
-            heroBg.addEventListener('load', () => {
-                heroSection.classList.remove('loading');
+            // Si la imagen ya está cargada, marcarla como loaded
+            if (heroBg.complete && heroBg.naturalHeight !== 0) {
                 heroSection.classList.add('loaded');
-            });
-            
-            heroBg.addEventListener('error', () => {
-                heroSection.classList.remove('loading');
-                heroSection.classList.add('error');
-            });
+            } else {
+                // Solo añadir loading si la imagen no está cargada
+                heroSection.classList.add('loading');
+                
+                heroBg.addEventListener('load', () => {
+                    heroSection.classList.remove('loading');
+                    heroSection.classList.add('loaded');
+                });
+                
+                heroBg.addEventListener('error', () => {
+                    heroSection.classList.remove('loading');
+                    heroSection.classList.add('error');
+                });
+            }
         }
     },
 
